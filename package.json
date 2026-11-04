@@ -1,7 +1,7 @@
 {
   "name": "arena-blaster",
   "version": "1.0.0",
-  "author:" "AethelDevs",
+  "author": "AethelDevs",
   "description": "Juego multijugador de arena en tiempo real con Node.js, Express y Socket.IO",
   "main": "server.js",
   "scripts": {
