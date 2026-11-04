@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arena Blaster · multijugador</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="hp-wrap">
+      <div id="hp-bar"><div id="hp-fill"></div></div>
+      <div id="hp-text">100</div>
+    </div>
+    <div id="kd">Bajas <b id="kd-k">0</b> · Muertes <b id="kd-d">0</b></div>
+    <div id="net"><span id="ping">-- ms</span> · <span id="fps">-- fps</span> · sala <b id="room-name"></b></div>
+    <button id="leave" type="button">Salir</button>
+    <div id="powerup" class="hidden">⚡ Fuego rápido</div>
+    <canvas id="minimap" width="200" height="134"></canvas>
+    <div id="top-board"></div>
+    <div id="killfeed"></div>
+    <div id="toasts"></div>
+    <div id="chat">
+      <div id="chat-log"></div>
+      <input id="chat-input" maxlength="120" placeholder="Escribe un mensaje y pulsa Enter…" autocomplete="off">
+    </div>
+    <div id="hint">WASD mover · ratón apuntar · clic disparar · Enter chat · Tab marcador · M sonido</div>
+  </div>
+
+  <div id="hurt" class="hidden"></div>
+
+  <div id="full-board" class="hidden">
+    <h2>Marcador</h2>
+    <table>
+      <thead><tr><th>#</th><th>Jugador</th><th>Bajas</th><th>Muertes</th></tr></thead>
+      <tbody id="full-body"></tbody>
+    </table>
+  </div>
+
+  <div id="death" class="hidden">
+    <div class="big">Te eliminó <span id="death-by"></span></div>
+    <div class="small">Reapareces en <b id="death-count">3</b>…</div>
+  </div>
+
+  <div id="roundover" class="hidden">
+    <div class="big">🏆 <span id="round-winner"></span> ganó la ronda</div>
+    <div class="small">Nueva ronda en <b id="round-count">8</b> s</div>
+  </div>
+
+  <div id="menu">
+    <div class="card">
+      <h1>ARENA <span>BLASTER</span></h1>
+      <p class="sub">Shooter multijugador en tiempo real · gana quien llegue primero a 20 bajas</p>
+
+      <label for="name">Tu nombre</label>
+      <input id="name" maxlength="16" placeholder="Jugador" autocomplete="off">
+
+      <label>Tu color</label>
+      <div id="swatches"></div>
+
+      <label for="room">Sala</label>
+      <input id="room" maxlength="20" value="arena" autocomplete="off">
+      <div id="rooms" class="rooms"></div>
+
+      <button id="play" type="button">Jugar</button>
+      <div id="menu-error"></div>
+
+      <ul class="help">
+        <li><b>WASD</b> / flechas — moverse</li>
+        <li><b>Ratón</b> — apuntar · <b>clic</b> — disparar</li>
+        <li><b>Enter</b> — chat · <b>Tab</b> — marcador · <b>M</b> — sonido</li>
+        <li>Botiquines verdes ➕ curan · rayos amarillos ⚡ aceleran el disparo</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>
